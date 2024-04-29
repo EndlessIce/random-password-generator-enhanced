@@ -9,16 +9,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
     <link rel="stylesheet" href="index.css">
 </head>
 
 <body class="change-theme">
     <div class="app d-flex flex-column text-center font-bold change-theme">
         <!-- CHANGE THEME -->
-        <div class="toggle-switch d-flex align-center gap-1em">
+        <div id="toggle-switch-theme" class="toggle-switch d-flex align-center gap-1em">
             <input type='checkbox' id="theme" class="toggle-switch__input">
-            <label id="theme-label" for="theme" class="toggle-switch__label height cursor-pointer"></label>
-            <p id="theme-text" class="toggle-switch__text change-theme">Light</p>
+            <label id="theme-label" for="theme" class="toggle-switch__label height cursor-pointer  change-theme"><i
+                    class="ti ti-moon-filled"></i></label>
         </div>
         <h1 class="heading change-theme">Random password <br><span>generator</span></h1>
         <p class="subhead change-theme">Never use an insecure password again.</p>
@@ -26,22 +27,22 @@
         <div class="d-flex flex-wrap gap-2em">
             <div class="d-flex flex-column gap-1em">
                 <div class="toggle-switch d-flex align-center gap-1em">
-                    <input type='checkbox' id="uppercase" class="toggle-switch__input set-char" data-char="uppercase">
+                    <input type='checkbox' id="uppercase" class="toggle-switch__input set-char" data-char="uppercase" checked>
                     <label for="uppercase" class="toggle-switch__label height border-radius cursor-pointer"></label>
                     <p class="toggle-switch__text change-theme">Uppercase</p>
                 </div>
                 <div class="toggle-switch d-flex align-center gap-1em">
-                    <input type='checkbox' id="lowercase" class="toggle-switch__input set-char" data-char="lowercase">
+                    <input type='checkbox' id="lowercase" class="toggle-switch__input set-char" data-char="lowercase" checked>
                     <label for="lowercase" class="toggle-switch__label height border-radius cursor-pointer"></label>
                     <p class="toggle-switch__text change-theme">Lowercase</p>
                 </div>
                 <div class="toggle-switch d-flex align-center gap-1em">
-                    <input type='checkbox' id="numbers" class="toggle-switch__input set-char" data-char="numbers">
+                    <input type='checkbox' id="numbers" class="toggle-switch__input set-char" data-char="numbers" checked>
                     <label for="numbers" class="toggle-switch__label height border-radius cursor-pointer"></label>
                     <p class="toggle-switch__text change-theme">Numbers</p>
                 </div>
                 <div class="toggle-switch d-flex align-center gap-1em">
-                    <input type='checkbox' id="symbols" class="toggle-switch__input set-char" data-char="symbols">
+                    <input type='checkbox' id="symbols" class="toggle-switch__input set-char" data-char="symbols" checked>
                     <label for="symbols" class="toggle-switch__label height border-radius cursor-pointer"></label>
                     <p class="toggle-switch__text change-theme">Symbols</p>
                 </div>
@@ -54,7 +55,9 @@
                 <label id="password-length-strength" for="password-length" class="slider__label change-theme"></label>
             </div>
         </div>
-        <button id="generate-passwords" class="button border-radius font-bold cursor-pointer">Generate passwords</button>
+        <button id="generate-passwords" class="button border-radius font-bold cursor-pointer">Generate
+            passwords</button>
+        <p class="alert-msg text-center font-bold">Please choose any type of characters!</p>
         <div class="division-line width"></div>
         <!-- PASSWORDS SHOW UP HERE -->
         <div class="password-box d-flex flex-column flex-wrap align-center gap-2em">
@@ -62,7 +65,6 @@
             <p id="password-2" class="password-box__password text-center border-radius cursor-pointer change-theme"></p>
         </div>
     </div>
-    <p class="alert-msg text-center font-bold"></p>
     <script src="index.js"></script>
 </body>
 

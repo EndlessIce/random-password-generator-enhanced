@@ -97,19 +97,18 @@ const passLengthInput = document.getElementById('password-length')
 const passLengthValue = document.getElementById('password-length-value')
 const passLengthStrength = document.getElementById('password-length-strength')
 const changeThemeInput = document.getElementById('theme')
-const themeText = document.getElementById('theme-text')
+const themeLabel = document.getElementById('theme-label')
 const alertMsg = document.querySelector('.alert-msg')
 const passCharArray = []
 const charFlags = {
-	uppercase: false,
-	lowercase: false,
-	numbers: false,
-	symbols: false,
+	uppercase: true,
+	lowercase: true,
+	numbers: true,
+	symbols: true,
 }
 
 // SET INITIAL STATE OF GENERATOR
 passLengthValue.textContent = passLengthInput.value
-passLengthStrength.textContent = 'Strong!'
 
 for (pass of document.querySelectorAll('.password-box__password')) {
 	pass.textContent = ''
@@ -121,7 +120,7 @@ function setCharacters(event) {
 	const { char } = input.dataset
 	charFlags[char] = input.checked
 	passCharArray.length = 0
-	alertMsg.textContent = ''
+	alertMsg.classList.remove('fade')
 
 	if (charFlags.uppercase) {
 		passCharArray.push(...characters.filter(char => char.match(/[A-Z]/)))
@@ -156,6 +155,7 @@ function generatePassword() {
 			}
 			pass.textContent = stringContainer
 			passLengthValue.textContent = passLengthInput.value
+			passGenBtn.removeAttribute('disabled', 'disabled')
 		}
 	} else {
 		for (pass of document.querySelectorAll('.password-box__password')) {
@@ -166,18 +166,54 @@ function generatePassword() {
 			alertMsg.classList.remove('fade')
 			void alertMsg.offsetWidth
 			alertMsg.classList.add('fade')
+			passGenBtn.setAttribute('disabled', 'disabled')
 		}
 	}
 
-	passLengthStrength.textContent = getPasswordStrengthString(Number(passLengthInput.value))
+	passLengthStrength.textContent = getPasswordStrengthString(Number(passLengthInput.value), charFlags)
 }
 
 // DETERMINE STRENGTH OF PASSWORD BASED ON ITS LENGTH
-function getPasswordStrengthString(length) {
-	if (length < 8) return 'Weak...'
-	if (length < 16) return 'Average...'
-	if (length < 24) return 'Strong!'
-	return 'Very Strong!!!'
+function getPasswordStrengthString(length, char) {
+	if (char.uppercase === false && char.lowercase === false && char.numbers === false && char.symbols === false) {
+		return ''
+	} else if (char.uppercase && char.lowercase && char.numbers && char.symbols) {
+		if (length < 5) return ' VERY WEAK'
+		if (length < 8) return 'WEAK'
+		if (length < 10) return 'AVERAGE'
+		if (length < 14) return 'STRONG'
+		return 'VERY STRONG'
+	} else if (char.uppercase && char.lowercase && (char.numbers || char.symbols)) {
+		if (length < 5) return ' VERY WEAK'
+		if (length < 8) return 'WEAK'
+		if (length < 12) return 'AVERAGE'
+		if (length < 16) return 'STRONG'
+		return 'VERY STRONG'
+	} else if ((char.uppercase || char.lowercase) && char.numbers && char.symbols) {
+		if (length < 5) return ' VERY WEAK'
+		if (length < 8) return 'WEAK'
+		if (length < 12) return 'AVERAGE'
+		if (length < 16) return 'STRONG'
+		return 'VERY STRONG'
+	} else if ((char.uppercase || char.lowercase) && (char.numbers || char.symbols)) {
+		if (length < 5) return ' VERY WEAK'
+		if (length < 10) return 'WEAK'
+		if (length < 16) return 'AVERAGE'
+		if (length < 20) return 'STRONG'
+		return 'VERY STRONG'
+	} else if ((char.numbers && char.symbols) || (char.uppercase && char.lowercase)) {
+		if (length < 5) return ' VERY WEAK'
+		if (length < 10) return 'WEAK'
+		if (length < 16) return 'AVERAGE'
+		if (length < 20) return 'STRONG'
+		return 'VERY STRONG'
+	} else if (char.numbers || char.symbols || char.uppercase || char.lowercase) {
+		if (length < 5) return ' VERY WEAK'
+		if (length < 12) return 'WEAK'
+		if (length < 18) return 'AVERAGE'
+		if (length < 24) return 'STRONG'
+		return 'VERY STRONG'
+	}
 }
 
 // COPY PASSWORDS
@@ -202,12 +238,12 @@ function changeTheme() {
 	if (changeThemeInput.checked) {
 		for (element of document.querySelectorAll('.change-theme')) {
 			element.classList.add('dark-theme')
-			themeText.textContent = 'Dark'
+			themeLabel.innerHTML = `<i class="ti ti-sun-filled"></i>`
 		}
 	} else {
 		for (element of document.querySelectorAll('.change-theme')) {
 			element.classList.remove('dark-theme')
-			themeText.textContent = 'Light'
+			themeLabel.innerHTML = `<i class="ti ti-moon-filled"></i>`
 		}
 	}
 }
