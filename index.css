@@ -15,6 +15,7 @@
 	--clr-gen-2: #f9fafb;
 	--clr-gen-3: #f43f5e;
 	--clr-gen-4: rgba(5, 150, 105, 0.4);
+	--clr-gen-5: rgba(249, 250, 251, 0.7);
 
 	/* LIGHT MODE COLORS */
 	--clr-bg-1-light: #d1fae5;
@@ -196,6 +197,7 @@ body {
 
 .button:disabled {
 	background: var(--clr-gen-4);
+	color: var(--clr-gen-5);
 }
 
 .division-line {
