@@ -28,7 +28,7 @@
         <h1 class="heading change-theme">Random password <br><span>generator</span></h1>
         <p class="subhead change-theme">Never use an insecure password again.</p>
         <!-- SETTINGS FOR PASSWORDS -->
-        <div class="d-flex flex-wrap gap-2em">
+        <div class="d-flex flex-wrap justify-center gap-2em">
             <div class="d-flex flex-column gap-1em">
                 <div class="toggle-switch d-flex align-center gap-1em">
                     <input type='checkbox' id="uppercase" class="toggle-switch__input set-char" data-char="uppercase"
@@ -60,7 +60,8 @@
                 <input id="password-length" type="range" min="1" max="32"
                     class="slider__input height width border-radius cursor-pointer">
                 <label id="password-length-value" for="password-length" class="slider__label change-theme"></label>
-                <label id="password-length-strength" for="password-length" class="slider__label change-theme"></label>
+                <label id="password-length-strength" for="password-length" class="slider__label change-theme">VERY
+                    STRONG</label>
             </div>
         </div>
         <button id="generate-passwords" class="button border-radius font-bold cursor-pointer">Generate
@@ -68,9 +69,13 @@
         <p class="alert-msg text-center font-bold">Please choose any type of characters!</p>
         <div class="division-line width"></div>
         <!-- PASSWORDS SHOW UP HERE -->
-        <div class="password-box d-flex flex-column flex-wrap align-center gap-2em">
-            <p id="password-1" class="password-box__password text-center border-radius cursor-pointer change-theme"></p>
-            <p id="password-2" class="password-box__password text-center border-radius cursor-pointer change-theme"></p>
+        <div class="d-flex flex-column flex-wrap align-center justify-center gap-2em">
+            <p id="password-1"
+                class="password d-flex align-center  justify-center text-center border-radius cursor-pointer change-theme">
+            </p>
+            <p id="password-2"
+                class="password d-flex align-center justify-center text-center border-radius cursor-pointer change-theme">
+            </p>
         </div>
     </div>
     <script src="index.js"></script>
