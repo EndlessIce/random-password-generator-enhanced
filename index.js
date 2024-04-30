@@ -140,7 +140,7 @@ const iconDark = `<svg
 // SET INITIAL STATE OF GENERATOR
 passLengthValue.textContent = passLengthInput.value
 
-for (pass of document.querySelectorAll('.password')) {
+for (pass of document.querySelectorAll('.password-box__password')) {
 	pass.textContent = ''
 }
 
@@ -174,7 +174,7 @@ function setCharacters(event) {
 // GENERATE PASSWORDS
 function generatePassword() {
 	if (passCharArray.length !== 0) {
-		for (pass of document.querySelectorAll('.password')) {
+		for (pass of document.querySelectorAll('.password-box__password')) {
 			let j = 0
 			let stringContainer = ''
 
@@ -188,7 +188,7 @@ function generatePassword() {
 			passGenBtn.removeAttribute('disabled', 'disabled')
 		}
 	} else {
-		for (pass of document.querySelectorAll('.password')) {
+		for (pass of document.querySelectorAll('.password-box__password')) {
 			pass.textContent = ''
 			passLengthValue.textContent = passLengthInput.value
 			alertMsg.style.color = 'var(--clr-gen-3)'
@@ -248,7 +248,7 @@ function getPasswordStrengthString(length, char) {
 
 // COPY PASSWORDS
 function copyPassword(event) {
-	for (pass of document.querySelectorAll('.password')) {
+	for (pass of document.querySelectorAll('.password-box__password')) {
 		pass = event.currentTarget
 		if (pass.textContent === '') {
 			console.log('hi')
@@ -287,7 +287,7 @@ for (input of document.querySelectorAll('.set-char')) {
 	input.addEventListener('input', setCharacters)
 }
 
-for (pass of document.querySelectorAll('.password')) {
+for (pass of document.querySelectorAll('.password-box__password')) {
 	pass.addEventListener('click', event => {
 		pass = event.currentTarget
 

@@ -198,13 +198,13 @@ body {
 }
 
 .division-line {
-	margin: 0 0 2.5em;
+	margin: 0 0 1em;
 	height: 0.05rem;
 	background: var(--clr-gen-1);
 }
 
 /* PASSWORD FIELDS */
-.password {
+.password-box__password {
 	width: 100%;
 	height: 3em;
 	white-space: nowrap;
@@ -339,5 +339,13 @@ body.dark-theme {
 
 	.app {
 		padding: 2em;
+	}
+
+	.division-line {
+		margin: 0 0 2.5em;
+	}
+
+	.password-box{
+		gap: 2em;
 	}
 }
