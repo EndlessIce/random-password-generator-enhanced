@@ -273,7 +273,7 @@ body.dark-theme {
 	color: var(--clr-text-1-dark);
 }
 
-.password.dark-theme {
+.password-box__password.dark-theme {
 	background: var(--clr-bg-3-dark);
 	color: var(--clr-text-2-dark);
 }
@@ -345,7 +345,7 @@ body.dark-theme {
 		margin: 0 0 2.5em;
 	}
 
-	.password-box{
+	.password-box {
 		gap: 2em;
 	}
 }
