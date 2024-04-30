@@ -140,7 +140,7 @@ const iconDark = `<svg
 // SET INITIAL STATE OF GENERATOR
 passLengthValue.textContent = passLengthInput.value
 
-for (pass of document.querySelectorAll('.password-box__password')) {
+for (pass of document.querySelectorAll('.password')) {
 	pass.textContent = ''
 }
 
