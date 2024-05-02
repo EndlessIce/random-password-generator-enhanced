@@ -99,14 +99,8 @@ const passLengthStrength = document.getElementById('password-length-strength')
 const changeThemeInput = document.getElementById('theme')
 const themeLabel = document.getElementById('theme-label')
 const alertMsg = document.querySelector('.alert-msg')
-const passCharArray = []
-const charFlags = {
-	uppercase: true,
-	lowercase: true,
-	numbers: true,
-	symbols: true,
-}
 
+// ICONS FOR LIGHT/DARK THEME
 const iconLight = `<svg
 		xmlns="http://www.w3.org/2000/svg"
 		width="24"
@@ -124,7 +118,7 @@ const iconLight = `<svg
 		<path d="M19.107 4.893a1 1 0 0 1 .083 1.32l-.083 .094l-.7 .7a1 1 0 0 1 -1.497 -1.32l.083 -.094l.7 -.7a1 1 0 0 1 1.414 0z" />
 		<path d="M12 2a1 1 0 0 1 .993 .883l.007 .117v1a1 1 0 0 1 -1.993 .117l-.007 -.117v-1a1 1 0 0 1 1 -1z" />
 		<path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
-	</svg>`
+		</svg>`
 
 const iconDark = `<svg
 		xmlns="http://www.w3.org/2000/svg"
@@ -135,9 +129,16 @@ const iconDark = `<svg
 		class="icon icon-tabler icons-tabler-filled icon-tabler-moon">
 		<path stroke="none" d="M0 0h24v24H0z" fill="none" />
 		<path d="M12 1.992a10 10 0 1 0 9.236 13.838c.341 -.82 -.476 -1.644 -1.298 -1.31a6.5 6.5 0 0 1 -6.864 -10.787l.077 -.08c.551 -.63 .113 -1.653 -.758 -1.653h-.266l-.068 -.006l-.06 -.002z" />
-	</svg>`
+		</svg>`
 
 // SET INITIAL STATE OF GENERATOR
+const passCharArray = []
+const charFlags = {
+	uppercase: true,
+	lowercase: true,
+	numbers: true,
+	symbols: true,
+}
 passLengthValue.textContent = passLengthInput.value
 
 for (pass of document.querySelectorAll('.password-box__password')) {
@@ -203,7 +204,7 @@ function generatePassword() {
 	passLengthStrength.textContent = getPasswordStrengthString(Number(passLengthInput.value), charFlags)
 }
 
-// DETERMINE STRENGTH OF PASSWORD BASED ON ITS LENGTH
+// DETERMINE STRENGTH OF PASSWORD BASED ON ITS LENGTH AND CHARACTERS
 function getPasswordStrengthString(length, char) {
 	if (char.uppercase === false && char.lowercase === false && char.numbers === false && char.symbols === false) {
 		return ''
